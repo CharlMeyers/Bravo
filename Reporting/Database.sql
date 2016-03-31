@@ -1,20 +1,11 @@
---Database: "People"
+DROP DATABASE People;
 
---DROP DATABASE "People";
+CREATE DATABASE People;
 
-CREATE DATABASE "People"
-	WITH OWNER = postgres
-		ENCODING = 'UTF8'
-		TABLESPACE = pg_default
-		LC_COLLATE = 'English_United States.1252'
-		LC_CTYPE = 'English_United States.1252'
-		CONNECTION LIMIT = -1;
+USE People;
 
---Can change owner as per Server if needed
-
---Creating the tables
 CREATE TABLE Person (
-	PersonID SERIAL Primary Key,
+	PersonID int Primary Key NOT NULL AUTO_INCREMENT,
 	firstNames Varchar(30),
 	surname Varchar(50),
 	Emails Varchar(50),
@@ -24,19 +15,19 @@ CREATE TABLE Person (
 );
 
 CREATE TABLE Organization (
-	OrganizationID SERIAL Primary Key,
+	OrganizationID int Primary Key NOT NULL AUTO_INCREMENT,
 	names Varchar(50)
 );
 
 CREATE TABLE ResearchGroup (
-	ResearchGroupID SERIAL Primary Key,
+	ResearchGroupID int Primary Key NOT NULL AUTO_INCREMENT,
 	Name Varchar(50),
 	StartDate Date,
 	EndDate Date
 );
 
 CREATE TABLE ResearchCategory (
-	ResearchCategoryID SERIAL Primary Key,
+	ResearchCategoryID int Primary Key NOT NULL AUTO_INCREMENT,
 	Name Varchar(50),
 	EffectiveDate Date
 );
@@ -56,7 +47,7 @@ REFERENCES ResearchCategory(ResearchCategoryID);
 INSERT INTO Organization(names)
 VALUES("Test Organization");
 
-INSERT INTO ResearcherCategory
+INSERT INTO ResearchCategory
 (Name, EffectiveDate) VALUES('Test Research Category','2016-01-01');
 
 INSERT INTO ResearchGroup

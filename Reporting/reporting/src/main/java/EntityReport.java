@@ -2,6 +2,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;
 import java.util.Map;
+//import com.mysql.jdb.*;
 
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -22,10 +23,10 @@ public class EntityReport {
 	public static void main(String[] args){
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306","root","camelCase12");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jpatutorial2","root","camelCase12");
 			
 			//load JR file
-			InputStream inStream = new FileInputStream(new File("C:/Users/JoDan/Documents/GitHub/Bravo/Reporting/reporting/src/main/javaBravoReport.jrxml"));
+			InputStream inStream = new FileInputStream(new File("C:/Users/JoDan/Documents/GitHub/Bravo/Reporting/reporting/src/main/java/BravoReport.jrxml"));
 			
 			//compile JR file
 			JasperDesign jDesign = JRXmlLoader.load(inStream);
@@ -43,7 +44,7 @@ public class EntityReport {
 			JasperExportManager.exportReportToPdfStream(jPrint, outStream);
 		}
 		catch(Exception e){
-			
+			e.printStackTrace();
 		}
 	}
 }

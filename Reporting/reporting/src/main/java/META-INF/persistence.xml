@@ -2,23 +2,23 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="reporting">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-		<class>model.Active</class>
-		<class>model.Activestate</class>
-		<class>model.Inprogressstate</class>
-		<class>model.Lifecyclestate</class>
-		<class>model.Notactive</class>
-		<class>model.Organization</class>
-		<class>model.Person</class>
-		<class>model.Publicationauthor</class>
-		<class>model.Publicationdetail</class>
-		<class>model.Publication</class>
-		<class>model.Publicationstate</class>
-		<class>model.Publicationtarget</class>
-		<class>model.Publicationtype</class>
-		<class>model.Publicationtypestate</class>
-		<class>model.Publishedstate</class>
-		<class>model.Researchercategory</class>
-		<class>model.Researchgroup</class>
+		<class>entity.Active</class>
+		<class>entity.Activestate</class>
+		<class>entity.Inprogressstate</class>
+		<class>entity.Lifecyclestate</class>
+		<class>entity.Notactive</class>
+		<class>entity.Organization</class>
+		<class>entity.Person</class>
+		<class>entity.Publicationauthor</class>
+		<class>entity.Publicationdetail</class>
+		<class>entity.Publication</class>
+		<class>entity.Publicationstate</class>
+		<class>entity.Publicationtarget</class>
+		<class>entity.Publicationtype</class>
+		<class>entity.Publicationtypestate</class>
+		<class>entity.Publishedstate</class>
+		<class>entity.Researchercategory</class>
+		<class>entity.Researchgroup</class>
 		<properties>
 			<property name="javax.persistence.schema-generation.create-database-schemas" value="true"/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/> 

@@ -19,12 +19,12 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 public class EntityReportGenerator implements ReportGenerator {
 
 	@Override
-	public void newReport() {
+	public void newReport(String q) throws NullEntryException {
 		try {
 			NewEM nem = new NewEM();
 			EntityManager em = nem.initEntityManager();
 			
-			Query p = em.createQuery("SELECT P FROM Person P");		
+			Query p = em.createQuery(q);		
 
             /* User home directory location */
             String userHomeDirectory = System.getProperty("user.home");
@@ -34,9 +34,9 @@ public class EntityReportGenerator implements ReportGenerator {
             
     		List<Person> pList = (List<Person>)p.getResultList();
     		
-    		for(Person P : pList){
-    			System.out.println(P.getFirstNames() + " " + P.getSurname());
-    		}
+			if(pList.size() == 0){
+				throw new NullEntryException();
+			}
             
             /* Convert List to JRBeanCollectionDataSource */
             JRBeanCollectionDataSource itemsJRBean = new JRBeanCollectionDataSource(pList);

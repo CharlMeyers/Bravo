@@ -1,3 +1,5 @@
+import javax.persistence.Query;
+
 /**
  * 
  */
@@ -7,5 +9,5 @@
  *
  */
 public interface ReportGenerator {
-	public void newReport();
+	public void newReport(Query q) throws NullEntryException;
 }

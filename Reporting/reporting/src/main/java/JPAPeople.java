@@ -41,13 +41,13 @@ public class JPAPeople {
             String userHomeDirectory = System.getProperty("user.home");
             System.out.println("HOME: "+userHomeDirectory);
             /* Output file location */
-            String outputFile = userHomeDirectory + File.separatorChar + "JasperTableExample.pdf";
+            String outputFile = userHomeDirectory + File.separatorChar + "PersonsReport.pdf";
             
-    		List pList = p.getResultList();
+    		List<Person> pList = (List<Person>)p.getResultList();
     		
-    		/*for(Person P : pList){
+    		for(Person P : pList){
     			System.out.println(P.getFirstNames() + " " + P.getSurname());
-    		}*/
+    		}
             
             /* Convert List to JRBeanCollectionDataSource */
             JRBeanCollectionDataSource itemsJRBean = new JRBeanCollectionDataSource(pList);

@@ -7,15 +7,19 @@ import java.util.List;
 
 /**
  * The persistent class for the organization database table.
+ * 
  */
 @Entity
+@Table(name="organization")
 @NamedQuery(name="Organization.findAll", query="SELECT o FROM Organization o")
 public class Organization implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(unique=true, nullable=false)
 	private int organizationID;
 
+	@Column(nullable=false, length=50)
 	private String names;
 
 	//bi-directional many-to-one association to Person

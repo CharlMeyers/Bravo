@@ -11,19 +11,24 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name="researchgroup")
 @NamedQuery(name="Researchgroup.findAll", query="SELECT r FROM Researchgroup r")
 public class Researchgroup implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(unique=true, nullable=false)
 	private int researchGroupID;
 
 	@Temporal(TemporalType.DATE)
+	@Column(nullable=false)
 	private Date endDate;
 
+	@Column(nullable=false, length=50)
 	private String name;
 
 	@Temporal(TemporalType.DATE)
+	@Column(nullable=false)
 	private Date startDate;
 
 	//bi-directional many-to-one association to Person

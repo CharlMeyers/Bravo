@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -9,33 +10,42 @@ import javax.persistence.*;
  * 
  */
 @Entity
+@Table(name="person")
 @NamedQuery(name="Person.findAll", query="SELECT p FROM Person p")
 public class Person implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(unique=true, nullable=false)
 	private int personID;
 
+	@Column(nullable=false, length=50)
 	private String emails;
 
+	@Column(nullable=false, length=30)
 	private String firstNames;
 
+	@Column(nullable=false, length=50)
 	private String surname;
 
 	//bi-directional many-to-one association to Organization
 	@ManyToOne
-	@JoinColumn(name="OrganizationID")
+	@JoinColumn(name="OrganizationID", nullable=false)
 	private Organization organization;
 
-	//bi-directional many-to-one association to Researchcategory
+	//bi-directional many-to-one association to Researchercategory
 	@ManyToOne
-	@JoinColumn(name="ResearchCategoryID")
-	private Researchcategory researchcategory;
+	@JoinColumn(name="ResearchCategoryID", nullable=false)
+	private Researchercategory researchercategory;
 
 	//bi-directional many-to-one association to Researchgroup
 	@ManyToOne
-	@JoinColumn(name="ResearchGroupID")
+	@JoinColumn(name="ResearchGroupID", nullable=false)
 	private Researchgroup researchgroup;
+
+	//bi-directional many-to-one association to Publicationauthor
+	@OneToMany(mappedBy="person")
+	private List<Publicationauthor> publicationauthors;
 
 	public Person() {
 	}
@@ -80,12 +90,12 @@ public class Person implements Serializable {
 		this.organization = organization;
 	}
 
-	public Researchcategory getResearchcategory() {
-		return this.researchcategory;
+	public Researchercategory getResearchercategory() {
+		return this.researchercategory;
 	}
 
-	public void setResearchcategory(Researchcategory researchcategory) {
-		this.researchcategory = researchcategory;
+	public void setResearchercategory(Researchercategory researchercategory) {
+		this.researchercategory = researchercategory;
 	}
 
 	public Researchgroup getResearchgroup() {
@@ -94,6 +104,28 @@ public class Person implements Serializable {
 
 	public void setResearchgroup(Researchgroup researchgroup) {
 		this.researchgroup = researchgroup;
+	}
+
+	public List<Publicationauthor> getPublicationauthors() {
+		return this.publicationauthors;
+	}
+
+	public void setPublicationauthors(List<Publicationauthor> publicationauthors) {
+		this.publicationauthors = publicationauthors;
+	}
+
+	public Publicationauthor addPublicationauthor(Publicationauthor publicationauthor) {
+		getPublicationauthors().add(publicationauthor);
+		publicationauthor.setPerson(this);
+
+		return publicationauthor;
+	}
+
+	public Publicationauthor removePublicationauthor(Publicationauthor publicationauthor) {
+		getPublicationauthors().remove(publicationauthor);
+		publicationauthor.setPerson(null);
+
+		return publicationauthor;
 	}
 
 }

@@ -3,7 +3,10 @@ package bravopeople;
 import java.util.ArrayList;
 
 /**
- * Created by matthew on 2016/03/26.
+ * <h1>Group Interface</h1>
+ * Interface for the Group Class.
+ * @author Bravo Team
+ * @version 1.0
  */
 public interface GroupInterface
 {
@@ -23,17 +26,33 @@ public interface GroupInterface
      * Sets the entities related to the group.
      * @param entities An ArrayList of all the entities.
      */
-    public void setEntities(ArrayList<Entity> entities);
+//    public void setEntities(ArrayList<Entity> entities);
 
     /**
      * Adds an entity relationship to the group.
      * @param entity The entity to be added.
      */
-    public void addEntity(Entity entity);
+//    public void addEntity(Entity entity);
 
     /**
      * Gets the entities related to the group.
      * @return An ArrayList of all the entities.
      */
-    public ArrayList<Entity> getEntities();
+//    public ArrayList<Entity> getEntities();
+
+    /**
+     * Checks if the group is active or inactive
+     * @return true if active (default), false if inactive.
+     */
+    public boolean isActive();
+
+    /**
+     * Sets the group to active (true)
+     */
+    public void activate();
+
+    /**
+     * Sets the group to inactive (false)
+     */
+    public void deactivate();
 }

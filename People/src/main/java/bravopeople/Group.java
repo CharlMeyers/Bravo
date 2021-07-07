@@ -8,16 +8,17 @@ import java.util.*;
  * @author Bravo Team
  * @version 1.0
  */
-class Group implements GroupInterface {
+class Group extends PersonEntity implements GroupInterface {
 	private String name;
-	private ArrayList<Entity> entities;		// Composite Pattern
+	private Boolean active;
+	private ArrayList<PersonEntity> entities;		// Composite Pattern
 
 	/**
 	 * Default constructor - Dummy object creation
 	 */
 	public Group() {
 		this.name = "MockGroup";
-		this.entities = new ArrayList<Entity>();
+		this.entities = new ArrayList<PersonEntity>();
 	}
 
 	/**
@@ -25,7 +26,7 @@ class Group implements GroupInterface {
 	 * @param name Name of the group 
 	 * @param entities Subgroups or people contain in the Group class
 	 */
-	public Group(String name, ArrayList<Entity> entities) {
+	public Group(String name, ArrayList<PersonEntity> entities) {
 		this.name = name;
 		this.entities = entities;
 	}
@@ -40,7 +41,7 @@ class Group implements GroupInterface {
 	 * Getter
 	 * @return Dynamically re-sizable ArrayList used to store subgroups or person objects 
 	 */
-	public ArrayList<Entity> getEntities() { return entities; }
+	public ArrayList<PersonEntity> getEntities() { return entities; }
 
 	/**
 	 * Setter
@@ -50,16 +51,41 @@ class Group implements GroupInterface {
 		this.name = name;
 	}
 
-	public void addEntity(Entity entity)
+	public void addEntity(PersonEntity entity)
 	{
-		
+		this.entities.add(entity);
 	}
 
 	/**
 	 * Setter
 	 * @param entities Dynamically re-sizable ArrayList used to store subgroups or person objects 
 	 */
-	public void setEntities(ArrayList<Entity> entities) {
+	public void setEntities(ArrayList<PersonEntity> entities) {
 		this.entities = entities;
 	}
+
+    /**
+     * Checks if the group is active or inactive
+     * @return true if active (default), false if inactive.
+     */
+    public boolean isActive()
+    {
+        return true;
+    }
+
+    /**
+     * Sets the group to active (true)
+     */
+    public void activate()
+    {
+	this.active = true;
+    }
+
+    /**
+     * Sets the group to inactive (false)
+     */
+    public void deactivate()
+    {
+	this.active = false;
+    }
 }
